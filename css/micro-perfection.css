@@ -1,0 +1,235 @@
+/* ========================================
+   MICROANIMACIONES PARA LA PERFECCIÓN
+   Detalles sutiles que mejoran la experiencia
+   ======================================== */
+
+/* ========================================
+   ANIMACIÓN DEL EMOJI ROBOT
+   Pulso sutil para dar vida al emoji
+   ======================================== */
+@keyframes subtle-pulse {
+    0%, 100% { 
+        transform: scale(1) translateY(0);      /* Tamaño normal */
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.03) translateY(-1px); /* Ligeramente más grande y arriba */
+        opacity: 0.95;
+    }
+}
+
+/* Aplica la animación solo al emoji robot */
+.artist-description .emoji-icon:last-child {
+    display: inline-block;
+    animation: subtle-pulse 4s ease-in-out infinite;  /* Loop infinito de 4s */
+    animation-delay: 2s;                              /* Empieza después de 2s */
+}
+
+/* ========================================
+   GRADIENTE ANIMADO EN BOTÓN PRIMARIO
+   Efecto de movimiento sutil en el fondo
+   ======================================== */
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.nav-button-primary {
+    /* Gradiente con múltiples paradas de color */
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        #7B73FF 25%,                    /* Morado más claro */
+        var(--color-primary-dark) 50%,
+        #7B73FF 75%,
+        var(--color-primary) 100%
+    );
+    background-size: 400% 400%;         /* Más grande que el elemento */
+    animation: gradient-shift 8s ease infinite;  /* Movimiento continuo */
+}
+
+/* ========================================
+   EFECTO SHIMMER EN EL NOMBRE
+   Brillo que pasa por el texto en hover
+   ======================================== */
+@keyframes text-shimmer {
+    0% { 
+        background-position: -200% center;
+    }
+    100% { 
+        background-position: 200% center;
+    }
+}
+
+.artist-name {
+    /* Gradiente transparente para el efecto */
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.7) 50%,   /* Brillo blanco */
+        transparent 60%
+    );
+    background-size: 200% 100%;
+    background-position: -200% center;
+    -webkit-background-clip: text;       /* Solo en el texto */
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+/* Activa el shimmer en hover */
+.artist-name:hover {
+    animation: text-shimmer 1.5s ease;
+}
+
+/* ========================================
+   ANIMACIÓN DE ENTRADA SUAVE
+   La tarjeta aparece con fade y movimiento
+   ======================================== */
+@keyframes smooth-entry {
+    from {
+        opacity: 0;
+        transform: translateY(10px);     /* Empieza 10px abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-card {
+    animation: smooth-entry 0.8s ease-out;
+}
+
+/* ========================================
+   MICRO-INTERACCIÓN EN LA FIRMA HM
+   Efecto hover con tooltip
+   ======================================== */
+.brand-signature {
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+}
+
+/* Efecto hover - más visible y más grande */
+.brand-signature:hover {
+    color: rgba(255, 255, 255, 0.3);
+    transform: rotate(-5deg) scale(1.1);
+}
+
+/* Tooltip "Crafted with 💜" */
+.brand-signature::after {
+    content: "Crafted with 💜";          /* Mensaje del tooltip */
+    position: absolute;
+    bottom: 100%;                        /* Encima del elemento */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;                 /* No romper línea */
+    opacity: 0;                          /* Invisible por defecto */
+    pointer-events: none;                /* No interfiere con clics */
+    transition: all 0.3s ease;
+}
+
+/* Muestra el tooltip en hover */
+.brand-signature:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ========================================
+   SKELETON LOADING (ESQUELETO DE CARGA)
+   Efecto de onda mientras carga (no visible en uso normal)
+   ======================================== */
+.profile-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Gradiente que simula carga */
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading-wave 1.5s ease-in-out infinite;
+    border-radius: var(--border-radius-xl);
+    z-index: -1;
+    opacity: 0;                          /* No se ve normalmente */
+}
+
+/* Animación de onda de carga */
+@keyframes loading-wave {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ========================================
+   PREVENIR FOUT (Flash Of Unstyled Text)
+   Evita que se vea texto sin fuente cargada
+   ======================================== */
+.fonts-loaded body {
+    opacity: 1;
+}
+
+body {
+    opacity: 0;                          /* Invisible hasta que carguen fuentes */
+    transition: opacity 0.3s ease;
+}
+
+/* ========================================
+   MEJORA DE FOCUS PARA ACCESIBILIDAD
+   Indicadores visuales claros para teclado
+   ======================================== */
+.nav-button:focus-visible {
+    outline: 3px solid var(--color-white);
+    outline-offset: 3px;
+    transform: translateY(-1px);         /* Sube ligeramente */
+}
+
+/* ========================================
+   EASTER EGG - CÓDIGO KONAMI
+   Animación especial cuando se activa
+   ======================================== */
+body.konami-activated .profile-image {
+    animation: spin 1s ease-in-out;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================
+   OPTIMIZACIÓN PARA 60FPS
+   Mejora el rendimiento de animaciones
+   ======================================== */
+* {
+    will-change: auto;                   /* Por defecto auto */
+}
+
+/* Elementos que se animan frecuentemente */
+.nav-button,
+.profile-image,
+.artist-name {
+    will-change: transform;              /* Optimiza transformaciones */
+}
+
+/* ========================================
+   ACCESIBILIDAD - REDUCIR ANIMACIONES
+   Para usuarios que prefieren menos movimiento
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;      /* Sin animaciones */
+        transition: none !important;     /* Sin transiciones */
+    }
+}

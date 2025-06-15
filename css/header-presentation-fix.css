@@ -1,0 +1,208 @@
+/* ========================================
+   FIX DE PRESENTACIÓN - INFORMACIÓN PERSONAL
+   Mejora la apariencia del header con el nombre y descripción
+   ======================================== */
+
+/* ========================================
+   INFORMACIÓN DEL PERFIL - PRESENTACIÓN MEJORADA
+   ======================================== */
+.profile-info {
+  text-align: center;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-lg) !important;
+  padding: 0 20px; /* Padding lateral para móvil */
+  position: relative; /* Para efectos */
+  background: none !important; /* Sin fondo */
+  border: none !important; /* Sin bordes */
+  box-shadow: none !important; /* Sin sombras */
+}
+
+/* ========================================
+   TEXTOS CON MEJOR JERARQUÍA VISUAL
+   ======================================== */
+
+/* Nombre principal - más prominente */
+.artist-name {
+  font-family: var(--font-primary);
+  font-size: 2.2rem !important; /* Más grande */
+  font-weight: 700;
+  margin-bottom: 12px !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(108, 99, 255, 0.3); /* Brillo más sutil */
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #ffffff !important; /* Blanco puro */
+}
+
+/* Título profesional con mejor diseño */
+.artist-title {
+  font-family: var(--font-primary);
+  font-size: 1.3rem !important; /* Tamaño apropiado */
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95) !important;
+  margin-bottom: 16px !important;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Tagline en cursiva */
+.artist-tagline {
+  font-family: var(--font-secondary);
+  font-size: 1rem !important;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8) !important;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  font-style: italic;
+  margin: 0 auto 20px !important;
+  max-width: 350px; /* Limitar ancho para mejor lectura */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Descripción con mejor espaciado */
+.artist-description {
+  font-family: var(--font-secondary);
+  font-size: 0.95rem !important;
+  font-weight: 400;
+  color: #000000 !important; /* Forzar el color negro */
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
+  padding: 16px 24px; /* Padding interno */
+  background: rgba(255, 255, 255, 0.08); /* Fondo muy sutil */
+  border-radius: 12px; /* Bordes redondeados */
+  backdrop-filter: blur(10px); /* Efecto blur */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde muy sutil */
+  max-width: 380px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   ICONOS EMOJI MEJORADOS
+   ======================================== */
+.emoji-icon {
+  display: inline-block;
+  font-size: 1.2em;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Emoji del título con animación sutil */
+.artist-title .emoji-icon {
+  font-size: 1.3em;
+  animation: subtle-float 3s ease-in-out infinite;
+}
+
+/* Emoji de la descripción */
+.artist-description .emoji-icon {
+  font-size: 1.2em;
+}
+
+/* ========================================
+   ANIMACIÓN FLOTANTE SUTIL
+   ======================================== */
+@keyframes subtle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* ========================================
+   SEPARADOR VISUAL OPCIONAL
+   ======================================== */
+.profile-info::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+/* ========================================
+   RESPONSIVE - MÓVILES
+   ======================================== */
+@media (max-width: 640px) {
+  .profile-info {
+    padding: 0 16px;
+  }
+
+  .artist-name {
+    font-size: 1.8rem !important;
+  }
+
+  .artist-title {
+    font-size: 1.1rem !important;
+  }
+
+  .artist-tagline {
+    font-size: 0.9rem !important;
+    max-width: 280px;
+  }
+
+  .artist-description {
+    font-size: 0.85rem !important;
+    padding: 12px 20px;
+    max-width: 320px;
+  }
+
+  .emoji-icon {
+    font-size: 1.1em;
+  }
+}
+
+/* ========================================
+   HOVER EFFECTS
+   ======================================== */
+.artist-description {
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.artist-description:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   MEJORAS DE LEGIBILIDAD
+   ======================================== */
+@media (min-width: 1024px) {
+  .artist-name {
+    font-size: 2.5rem !important;
+  }
+
+  .artist-title {
+    font-size: 1.4rem !important;
+  }
+
+  .artist-tagline {
+    font-size: 1.1rem !important;
+  }
+
+  .artist-description {
+    font-size: 1rem !important;
+    padding: 18px 32px;
+  }
+}

@@ -1,0 +1,62 @@
+# ========================================
+# ARCHIVO .GITIGNORE
+# Define qué archivos/carpetas NO deben subirse a Git
+# ========================================
+
+# ========================================
+# ARCHIVOS DEL SISTEMA OPERATIVO
+# ========================================
+.DS_Store          # Archivo de metadatos de macOS
+Thumbs.db          # Cache de miniaturas de Windows
+
+# ========================================
+# ARCHIVOS DE EDITORES DE CÓDIGO
+# ========================================
+.vscode/           # Configuración de Visual Studio Code
+.idea/             # Configuración de IntelliJ IDEA/WebStorm
+*.swp              # Archivos temporales de Vim
+*.swo              # Archivos temporales de Vim
+*~                 # Archivos de respaldo de varios editores
+
+# ========================================
+# ARCHIVOS DE LOGS
+# ========================================
+*.log              # Cualquier archivo de registro/log
+
+# ========================================
+# DEPENDENCIAS (PARA FUTURO USO)
+# Si agregas npm o bower al proyecto
+# ========================================
+node_modules/      # Dependencias de npm
+bower_components/  # Dependencias de Bower
+
+# ========================================
+# ARCHIVOS COMPILADOS/MINIFICADOS
+# ========================================
+*.min.css          # CSS minificado
+*.min.js           # JavaScript minificado
+
+# ========================================
+# ARCHIVOS TEMPORALES
+# ========================================
+*.tmp              # Archivos temporales
+*.temp             # Archivos temporales
+
+# ========================================
+# ARCHIVOS DE RESPALDO
+# ========================================
+*.backup           # Copias de seguridad
+*.bak              # Archivos de respaldo
+
+# ========================================
+# ARCHIVOS SENSIBLES/CONFIGURACIÓN
+# ========================================
+.env               # Variables de entorno
+config.js          # Archivos de configuración con datos sensibles
+
+# ========================================
+# CARPETAS DE BUILD/DISTRIBUCIÓN
+# Para cuando uses herramientas de compilación
+# ========================================
+dist/              # Carpeta de distribución
+build/             # Carpeta de compilación

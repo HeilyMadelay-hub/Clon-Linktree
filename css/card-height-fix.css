@@ -1,0 +1,32 @@
+.background-wrapper {
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem !important;
+}
+
+.profile-card {
+  width: 100% !important;
+  max-width: 800px !important;
+  min-height: 85vh !important;
+  margin: auto !important;
+  padding: 2rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.profile-info {
+  margin-bottom: 2rem !important;
+}
+
+.nav-buttons {
+  margin-bottom: 2rem !important;
+}
+
+.copyright {
+  text-align: center !important;
+  margin-top: auto !important;
+  padding-top: 1rem !important;
+}

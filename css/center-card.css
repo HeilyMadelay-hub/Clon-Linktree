@@ -1,0 +1,65 @@
+body {
+  min-height: 100vh !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.background-wrapper {
+  width: 100% !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem !important;
+}
+
+.profile-card {
+  width: 100% !important;
+  max-width: 600px !important; /* Ajuste del ancho máximo */
+  min-height: 90vh !important;
+  margin: 0 auto !important;
+  padding: 2rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: rgba(
+    0,
+    255,
+    255,
+    0.5
+  ) !important; /* Fondo #00FFFF con transparencia */
+}
+
+.profile-card img {
+  border: 5px solid white !important; /* Eliminar el borde negro y mantener solo el borde blanco */
+  box-shadow: none !important; /* Asegurar que no haya sombra que simule otro borde */
+  border-radius: 50% !important; /* Asegurar que el borde sea circular */
+}
+
+.links-container {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.footer-content {
+  margin-top: 0rem !important; /* Eliminar completamente el espacio superior del copyright */
+  padding-top: 0.5rem !important; /* Reducir aún más el espacio superior */
+}
+
+.copyright-text {
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0.5rem 0; /* Reducir aún más el margen superior e inferior */
+}
+
+.nav-buttons {
+  margin-bottom: 0rem !important; /* Eliminar completamente el margen inferior */
+}

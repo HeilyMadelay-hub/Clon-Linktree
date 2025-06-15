@@ -1,0 +1,106 @@
+/* ========================================
+   OVERRIDE ABSOLUTO - ELIMINA TODA EXPANSIÓN
+   Este archivo DEBE cargarse AL FINAL
+   Sobrescribe cualquier otro estilo conflictivo
+   ======================================== */
+
+/* ========================================
+   ELIMINAR TODOS LOS PSEUDO-ELEMENTOS
+   Los pseudo-elementos ::before y ::after pueden causar expansión
+   ======================================== */
+.nav-button::before,
+.nav-button::after,
+.nav-button-primary::before,
+.nav-button-primary::after,
+.nav-button-secondary::before,
+.nav-button-secondary::after,
+.nav-button-accent::before,
+.nav-button-accent::after,
+.nav-button-disabled::before,
+.nav-button-disabled::after,
+.nav-button:active::before,
+.nav-button:active::after,
+.nav-button-accent:active::before,
+.nav-button-accent:active::after {
+    display: none !important;           /* Oculta completamente */
+    content: none !important;           /* Sin contenido */
+    width: 0 !important;                /* Sin ancho */
+    height: 0 !important;               /* Sin altura */
+}
+
+/* ========================================
+   FIJAR TAMAÑO DEL BOTÓN ROJO ESPECÍFICAMENTE
+   Selector muy específico para el botón de email
+   ======================================== */
+a.nav-button-accent[href^="mailto:"] {
+    display: flex !important;                    /* Flexbox para centrar contenido */
+    align-items: center !important;              /* Centra verticalmente */
+    justify-content: center !important;          /* Centra horizontalmente */
+    width: 100% !important;                      /* Ancho completo */
+    max-width: 100% !important;                  /* No puede crecer más */
+    padding: 16px 32px !important;               /* Padding fijo */
+    box-sizing: border-box !important;           /* Incluye padding en el ancho */
+    overflow: hidden !important;                 /* Oculta contenido que sobresalga */
+    position: relative !important;               /* Para posicionar elementos hijos */
+}
+
+/* ========================================
+   ESTADOS DEL BOTÓN ROJO - SIN EXPANSIÓN
+   Todos los estados posibles del botón
+   ======================================== */
+a.nav-button-accent[href^="mailto:"]:hover,
+a.nav-button-accent[href^="mailto:"]:active,
+a.nav-button-accent[href^="mailto:"]:focus,
+a.nav-button-accent[href^="mailto:"]:visited {
+    width: 100% !important;                      /* Mantiene ancho */
+    max-width: 100% !important;                  /* No crece */
+    padding: 16px 32px !important;               /* Padding consistente */
+    box-sizing: border-box !important;           /* Box model consistente */
+}
+
+/* ========================================
+   SOLO MOVIMIENTO VERTICAL PERMITIDO
+   El botón puede moverse pero NO cambiar de tamaño
+   ======================================== */
+a.nav-button-accent[href^="mailto:"]:hover {
+    transform: translateY(-2px) !important;      /* Sube 2px */
+}
+
+a.nav-button-accent[href^="mailto:"]:active {
+    transform: translateY(0) !important;         /* Vuelve a posición original */
+}
+
+/* ========================================
+   CONTENEDOR DE BOTONES
+   Configuración del contenedor principal
+   ======================================== */
+.nav-buttons {
+    display: flex !important;                    /* Flexbox */
+    flex-direction: column !important;           /* Botones en columna */
+    gap: 8px !important;                         /* Espacio entre botones */
+    width: 100% !important;                      /* Ancho completo */
+    padding: 0 8px !important;                   /* Padding lateral pequeño */
+    overflow: visible !important;                /* Permite overflow si necesario */
+}
+
+/* ========================================
+   BOX-SIZING CORRECTO PARA TODOS
+   Asegura que el padding no afecte el ancho
+   ======================================== */
+.nav-button {
+    box-sizing: border-box !important;
+}
+
+/* ========================================
+   MEDIA QUERY PARA MÓVILES
+   Mismo comportamiento en pantallas pequeñas
+   ======================================== */
+@media (max-width: 640px) {
+    /* Botón rojo en móviles */
+    a.nav-button-accent[href^="mailto:"],
+    a.nav-button-accent[href^="mailto:"]:active {
+        padding: 16px 16px !important;           /* Padding más pequeño */
+        width: 100% !important;                  /* Ancho completo */
+        max-width: 100% !important;              /* No puede crecer */
+    }
+}

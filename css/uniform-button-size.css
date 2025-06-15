@@ -1,0 +1,277 @@
+/* ========================================
+   FIX UNIFORME - TODOS LOS BOTONES MISMO TAMAÑO
+   Este archivo asegura que TODOS los botones sean idénticos
+   ======================================== */
+
+/* ========================================
+   RESET TOTAL - TODOS LOS BOTONES
+   ======================================== */
+.nav-button,
+.nav-button-primary,
+.nav-button-secondary,
+.nav-button-accent,
+.nav-button-disabled,
+a.nav-button,
+button.nav-button {
+    /* ========================================
+       DIMENSIONES EXACTAS PARA TODOS
+       ======================================== */
+    width: 100% !important;              /* Ancho completo */
+    min-width: 100% !important;          /* Ancho mínimo */
+    max-width: 100% !important;          /* Ancho máximo */
+    height: 48px !important;             /* Altura fija de 48px */
+    min-height: 48px !important;         /* Altura mínima */
+    max-height: 48px !important;         /* Altura máxima */
+    
+    /* ========================================
+       PADDING UNIFORME
+       ======================================== */
+    padding: 12px 24px !important;       /* Padding exacto */
+    
+    /* ========================================
+       ALINEACIÓN Y DISPLAY
+       ======================================== */
+    display: flex !important;            /* Flexbox para todos */
+    align-items: center !important;      /* Centrado vertical */
+    justify-content: center !important;  /* Centrado horizontal */
+    gap: 12px !important;                /* Espacio entre icono y texto */
+    
+    /* ========================================
+       BOX MODEL
+       ======================================== */
+    box-sizing: border-box !important;   /* Incluir padding en tamaño */
+    margin: 0 !important;                /* Sin márgenes */
+    
+    /* ========================================
+       TIPOGRAFÍA UNIFORME
+       ======================================== */
+    font-family: var(--font-secondary) !important;
+    font-size: 16px !important;          /* Tamaño de fuente fijo */
+    font-weight: 500 !important;         /* Peso uniforme */
+    line-height: 1.2 !important;         /* Altura de línea */
+    text-align: center !important;       /* Texto centrado */
+    white-space: nowrap !important;      /* No romper líneas */
+    
+    /* ========================================
+       BORDES UNIFORMES
+       ======================================== */
+    border-radius: 12px !important;      /* Radio uniforme */
+    border-width: 1px !important;        /* Ancho de borde */
+    
+    /* ========================================
+       OVERFLOW
+       ======================================== */
+    overflow: hidden !important;         /* Ocultar desbordamiento */
+    text-overflow: ellipsis !important;  /* Puntos suspensivos si es largo */
+}
+
+/* ========================================
+   CONTENEDOR DE BOTONES
+   ======================================== */
+.nav-buttons {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;                /* Espacio uniforme entre botones */
+    padding: 0 8px !important;
+    align-items: stretch !important;     /* Estirar todos los botones */
+}
+
+/* ========================================
+   ICONOS - TAMAÑO UNIFORME
+   ======================================== */
+.nav-button i,
+.nav-button-primary i,
+.nav-button-secondary i,
+.nav-button-accent i,
+.nav-button-disabled i {
+    font-size: 18px !important;          /* Tamaño de icono uniforme */
+    width: 20px !important;              /* Ancho fijo */
+    min-width: 20px !important;          /* Ancho mínimo */
+    text-align: center !important;       /* Centrado */
+    flex-shrink: 0 !important;           /* No encoger */
+}
+
+/* ========================================
+   TEXTO - TAMAÑO UNIFORME
+   ======================================== */
+.nav-button span,
+.nav-button-primary span,
+.nav-button-secondary span,
+.nav-button-accent span,
+.nav-button-disabled span {
+    flex: 1 !important;                  /* Tomar espacio disponible */
+    text-align: center !important;       /* Centrado */
+    font-size: 16px !important;          /* Tamaño uniforme */
+}
+
+/* ========================================
+   ESTADOS HOVER - SIN CAMBIO DE TAMAÑO
+   ======================================== */
+.nav-button:hover,
+.nav-button-primary:hover,
+.nav-button-secondary:hover,
+.nav-button-accent:hover {
+    /* Solo cambiar elevación, NO tamaño */
+    transform: translateY(-2px) !important;
+    width: 100% !important;              /* Mantener ancho */
+    height: 48px !important;             /* Mantener altura */
+    padding: 12px 24px !important;       /* Mantener padding */
+}
+
+/* ========================================
+   ESTADOS ACTIVE - SIN CAMBIO DE TAMAÑO
+   ======================================== */
+.nav-button:active,
+.nav-button-primary:active,
+.nav-button-secondary:active,
+.nav-button-accent:active {
+    transform: translateY(0) !important;
+    width: 100% !important;              /* Mantener ancho */
+    height: 48px !important;             /* Mantener altura */
+    padding: 12px 24px !important;       /* Mantener padding */
+}
+
+/* ========================================
+   BOTONES DESHABILITADOS - MISMO TAMAÑO
+   ======================================== */
+.nav-button-disabled,
+.nav-button-disabled:hover,
+.nav-button-disabled:active,
+.nav-button-disabled:focus {
+    width: 100% !important;              /* Mismo ancho */
+    height: 48px !important;             /* Misma altura */
+    padding: 12px 24px !important;       /* Mismo padding */
+    transform: none !important;          /* Sin transformación */
+    cursor: not-allowed !important;      /* Cursor prohibido */
+    pointer-events: none !important;     /* Sin eventos */
+}
+
+/* ========================================
+   WRAPPER Y OVERLAY - MISMO TAMAÑO
+   ======================================== */
+.disabled-button-wrapper {
+    width: 100% !important;
+    height: 48px !important;             /* Misma altura que botones */
+    position: relative !important;
+    display: block !important;
+}
+
+.disabled-button-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 48px !important;             /* Misma altura */
+    border-radius: 12px !important;      /* Mismo radio */
+    z-index: 10 !important;
+    cursor: not-allowed !important;
+    pointer-events: auto !important;
+}
+
+/* ========================================
+   ELIMINAR EFECTOS QUE CAMBIEN TAMAÑO
+   ======================================== */
+.nav-button::before,
+.nav-button::after,
+.nav-button-primary::before,
+.nav-button-primary::after,
+.nav-button-secondary::before,
+.nav-button-secondary::after,
+.nav-button-accent::before,
+.nav-button-accent::after,
+.nav-button-disabled::before,
+.nav-button-disabled::after {
+    display: none !important;            /* Sin pseudo-elementos */
+}
+
+/* ========================================
+   FORZAR ALTURA EN ENLACES
+   ======================================== */
+a.nav-button,
+a.nav-button-primary,
+a.nav-button-secondary,
+a.nav-button-accent {
+    height: 48px !important;             /* Altura fija */
+    line-height: normal !important;      /* Línea normal */
+    vertical-align: middle !important;   /* Alineación vertical */
+}
+
+/* ========================================
+   MEDIA QUERY MÓVIL - MISMO TAMAÑO
+   ======================================== */
+@media (max-width: 640px) {
+    .nav-button,
+    .nav-button-primary,
+    .nav-button-secondary,
+    .nav-button-accent,
+    .nav-button-disabled,
+    a.nav-button,
+    button.nav-button {
+        height: 44px !important;         /* Ligeramente más pequeño en móvil */
+        min-height: 44px !important;
+        max-height: 44px !important;
+        padding: 10px 20px !important;   /* Padding ajustado */
+        font-size: 15px !important;      /* Fuente ligeramente menor */
+    }
+    
+    .disabled-button-wrapper,
+    .disabled-button-overlay {
+        height: 44px !important;
+    }
+    
+    .nav-button i,
+    .nav-button-primary i,
+    .nav-button-secondary i,
+    .nav-button-accent i,
+    .nav-button-disabled i {
+        font-size: 16px !important;      /* Iconos más pequeños */
+    }
+}
+
+/* ========================================
+   OVERRIDE FINAL - MÁXIMA PRIORIDAD
+   ======================================== */
+body .nav-buttons .nav-button,
+body .nav-buttons .nav-button-primary,
+body .nav-buttons .nav-button-secondary,
+body .nav-buttons .nav-button-accent,
+body .nav-buttons .nav-button-disabled {
+    height: 48px !important;
+    line-height: normal !important;
+}
+
+/* ========================================
+   MANTENER COLORES ORIGINALES
+   Solo colores, NO tamaños
+   ======================================== */
+
+/* Botón primario (LinkedIn) - Morado */
+.nav-button-primary {
+    background: linear-gradient(135deg, #6C63FF 0%, #5547d9 100%) !important;
+    color: white !important;
+    border: 1px solid transparent !important;
+}
+
+/* Botones secundarios - Transparentes */
+.nav-button-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Botón accent (Email) - Rojo */
+.nav-button-accent {
+    background: linear-gradient(135deg, #FF3B3B 0%, #E02E2E 100%) !important;
+    color: white !important;
+    border: 1px solid transparent !important;
+}
+
+/* Botones deshabilitados - Opacidad reducida */
+.nav-button-disabled {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    opacity: 0.7 !important;
+}

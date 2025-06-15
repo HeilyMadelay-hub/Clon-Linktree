@@ -1,0 +1,116 @@
+/* ========================================
+   FIX DEFINITIVO - ELIMINA TODA EXPANSIÓN
+   Este archivo previene que los botones cambien de tamaño
+   ======================================== */
+
+/* ========================================
+   RESETEAR TRANSICIONES
+   Solo permite transiciones controladas
+   ======================================== */
+.nav-button {
+    /* Solo permite transiciones de transform y box-shadow, NO de tamaño */
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* ========================================
+   BOTONES DESHABILITADOS - BLOQUEO TOTAL
+   Previene cualquier cambio en botones deshabilitados
+   ======================================== */
+.nav-button-disabled,
+.nav-button-disabled:hover,
+.nav-button-disabled:active,
+.nav-button-disabled:focus,
+.nav-button-disabled:focus-visible,
+button.nav-button-disabled:hover,
+button.nav-button-disabled:active,
+button.nav-button-disabled:focus {
+    /* ========================================
+       DIMENSIONES FIJAS - NO CAMBIAR
+       ======================================== */
+    width: 100% !important;              /* Ancho fijo al 100% */
+    padding: 16px 32px !important;       /* Padding fijo */
+    margin: 0 !important;                /* Sin márgenes */
+    
+    /* ========================================
+       BLOQUEAR TRANSFORMACIONES
+       ======================================== */
+    transform: none !important;          /* Sin transformaciones */
+    transition: none !important;         /* Sin transiciones */
+    animation: none !important;          /* Sin animaciones */
+    
+    /* ========================================
+       VISUAL CONSISTENTE
+       ======================================== */
+    opacity: 0.6 !important;             /* Semi-transparente */
+    background: rgba(255, 255, 255, 0.1) !important;  /* Fondo consistente */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;  /* Sombra mínima */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;   /* Borde consistente */
+    
+    /* ========================================
+       SIN EVENTOS
+       ======================================== */
+    pointer-events: none !important;     /* NO recibe eventos del mouse */
+    cursor: not-allowed !important;      /* Cursor de prohibido */
+}
+
+/* ========================================
+   ARREGLAR EL BOTÓN ROJO
+   Previene que el botón de email se expanda
+   ======================================== */
+.nav-button-accent {
+    width: 100% !important;              /* Ancho fijo */
+    padding: 16px 32px !important;       /* Padding fijo */
+}
+
+/* Estado activo del botón rojo */
+.nav-button-accent:active {
+    transform: translateY(-2px) !important;  /* Solo se mueve verticalmente */
+    /* NO cambiar tamaño, solo mover */
+}
+
+/* ========================================
+   WRAPPER PARA CLICKS
+   Contenedor de botones deshabilitados
+   ======================================== */
+.disabled-button-wrapper {
+    position: relative !important;       /* Para posicionar el overlay */
+    width: 100% !important;              /* Ancho completo */
+    margin: 0 !important;                /* Sin márgenes */
+    padding: 0 !important;               /* Sin padding */
+}
+
+/* ========================================
+   OVERLAY INVISIBLE
+   Captura los clics en botones deshabilitados
+   ======================================== */
+.disabled-button-overlay {
+    position: absolute !important;       /* Posicionado sobre el botón */
+    top: 0 !important;                   /* Cubre desde arriba */
+    left: 0 !important;                  /* Cubre desde la izquierda */
+    right: 0 !important;                 /* Cubre hasta la derecha */
+    bottom: 0 !important;                /* Cubre hasta abajo */
+    z-index: 10 !important;              /* Encima del botón */
+    cursor: not-allowed !important;      /* Cursor de prohibido */
+    pointer-events: auto !important;     /* SÍ recibe eventos (importante!) */
+}
+
+/* ========================================
+   CONTENEDOR DE BOTONES
+   Previene overflow
+   ======================================== */
+.nav-buttons {
+    overflow: visible !important;        /* Permite que elementos sobresalgan si necesario */
+}
+
+/* ========================================
+   MEDIA QUERY PARA MÓVILES
+   Mismo comportamiento en dispositivos pequeños
+   ======================================== */
+@media (max-width: 640px) {
+    /* Botones deshabilitados en móvil */
+    .nav-button-disabled,
+    .nav-button-accent {
+        padding: 16px 16px !important;   /* Padding más pequeño en móvil */
+        width: 100% !important;          /* Mantiene ancho completo */
+    }
+}
