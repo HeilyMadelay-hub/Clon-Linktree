@@ -74,14 +74,10 @@
     <!-- Título optimizado -->
     <title>Heily Madelay Tandazo | Backend & AI Developer</title>
 
-    <!-- CSS en orden de carga -->
+    <!-- CSS CONSOLIDADO - Solo 3 archivos -->
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/professional-spacing.css" />
-    <link rel="stylesheet" href="css/disable-image-click.css" />
-    <link rel="stylesheet" href="css/micro-perfection.css" />
-    <link rel="stylesheet" href="css/perfect-spacing.css" />
-    <link rel="stylesheet" href="css/card-height-fix.css" />
-    <link rel="stylesheet" href="css/center-card.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
 
     <!-- Schema.org JSON-LD para SEO -->
     <script type="application/ld+json">
@@ -99,45 +95,13 @@
         ]
       }
     </script>
-
-    <style>
-      .leetcode-button {
-        background-color: #ffd700;
-        color: #ffffff !important; /* Forzar el color blanco */
-        border-radius: 8px;
-        padding: 10px;
-        text-align: center;
-        font-weight: bold;
-      }
-
-      .artist-description {
-        background-color: #d3d3d3;
-        color: #000000 !important; /* Forzar el color negro */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-        border-radius: 16px; /* Curvatura más redondeada */
-        font-family: 'IBM Plex Sans', 'Roboto', sans-serif; /* Tipografía técnica */
-        font-weight: 500; /* Elegancia visual */
-        animation: fadeIn 1s ease-in; /* Animación de entrada */
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
   </head>
   <body>
     <!-- Contenedor principal -->
-    <main id="main-content" role="main" class="container background-wrapper">
+    <main id="main-content" role="main">
       <!-- Tarjeta de perfil con glassmorphism -->
       <article
-        class="card profile-card glassmorphism"
+        class="profile-card glassmorphism"
         id="profileCard"
         data-aos="fade-up"
       >
@@ -166,111 +130,29 @@
             <h1 class="artist-name">Heily Madelay Tandazo</h1>
 
             <h2 class="artist-title">
-              <span class="title-text">Backend & AI Developer</span>
+              <span class="title-text" style="font-size: 1.5em"
+                >Backend & AI Developer</span
+              >
             </h2>
 
-            <p class="artist-description" style="background-color: #d3d3d3; color: #000000;">
+            <p class="artist-description">
               <span class="subtitle-tagline">
                 Turning complex problems into <strong>secure</strong>,
                 <strong>intelligent</strong> solutions that scale.
               </span>
-              <span class="emoji-icon" role="img" aria-label="Robot">🤖</span>
             </p>
           </header>
 
-          <!-- Botones de navegación -->
+          <!-- Línea divisoria superior -->
+          <div class="divider-top"></div>
+
+          <!-- Botones de navegación - Se generarán dinámicamente -->
           <nav
             class="nav-buttons"
             role="navigation"
             aria-label="Social media and portfolio links"
           >
-            <!-- LinkedIn - Botón primario -->
-            <a
-              href="https://www.linkedin.com/in/heilymajtan/"
-              class="nav-button nav-button-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-aos="fade-up"
-              data-aos-delay="400"
-              aria-label="View LinkedIn profile"
-            >
-              <i class="fab fa-linkedin" aria-hidden="true"></i>
-              <span>Let's connect professionally</span>
-            </a>
-
-            <!-- GitHub -->
-            <a
-              href="https://github.com/HeilyMadelay-hub"
-              class="nav-button nav-button-secondary"
-              style="background-color: #333 !important; color: #fff !important;" /* Color de GitHub */
-              target="_blank"
-              rel="noopener noreferrer"
-              data-aos="fade-up"
-              data-aos-delay="450"
-              aria-label="View GitHub projects"
-            >
-              <i class="fab fa-github" aria-hidden="true"></i>
-              <span>Explore my code</span>
-            </a>
-
-            <!-- TikTok - Coming soon -->
-            <button
-              class="nav-button nav-button-secondary nav-button-disabled"
-              data-aos="fade-up"
-              data-aos-delay="500"
-              aria-label="TikTok - Coming soon"
-            >
-              <i class="fab fa-tiktok" aria-hidden="true"></i>
-              <span>Follow my tech journey</span>
-            </button>
-
-            <!-- Email - Botón accent -->
-            <a
-              href="mailto:heilymadelayajtan@icloud.com"
-              class="nav-button nav-button-accent"
-              data-aos="fade-up"
-              data-aos-delay="550"
-              aria-label="Send email"
-            >
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-              <span>Start a conversation</span>
-            </a>
-
-            <!-- Portfolio - Coming soon -->
-            <button
-              class="nav-button nav-button-secondary nav-button-disabled"
-              data-aos="fade-up"
-              data-aos-delay="600"
-              aria-label="Portfolio - Coming soon"
-            >
-              <i class="fas fa-briefcase" aria-hidden="true"></i>
-              <span>See my work</span>
-            </button>
-
-            <!-- Newsletter - Coming soon -->
-            <button
-              class="nav-button nav-button-secondary nav-button-disabled"
-              data-aos="fade-up"
-              data-aos-delay="650"
-              aria-label="Newsletter - Coming soon"
-            >
-              <i class="fas fa-newspaper" aria-hidden="true"></i>
-              <span>View my newsletter</span>
-            </button>
-
-            <a
-              href="https://leetcode.com/u/heilymadelay-hub/"
-              class="nav-button nav-button-secondary leetcode-button"
-              style="background-color: #FFD700 !important; color: #000 !important; border: 2px solid #000 !important;" /* Amarillo con borde negro */
-              target="_blank"
-              rel="noopener noreferrer"
-              data-aos="fade-up"
-              data-aos-delay="650"
-              aria-label="View LeetCode account"
-            >
-              <i class="fas fa-code" aria-hidden="true"></i>
-              <span style="color: #ffffff !important;">View my LeetCode account</span>
-            </a>
+            <!-- Los botones se generarán automáticamente desde CONFIG.js -->
           </nav>
         </div>
 
@@ -287,37 +169,13 @@
       </article>
     </main>
 
-    <!-- Modal "Coming Soon" -->
-    <div
-      id="customModal"
-      class="custom-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalTitle"
-    >
-      <div class="modal-content glassmorphism">
-        <h3 id="modalTitle" class="modal-title">Coming Soon!</h3>
-        <div class="modal-message" id="modalMessage">
-          <i class="fas fa-hard-hat modal-icon"></i>
-          <p>This section is not available yet. We're working on it!</p>
-        </div>
-        <button class="modal-button" id="closeModal" aria-label="Close modal">
-          Accept
-        </button>
-      </div>
-    </div>
-
     <!-- Scripts JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/modal-fix.js"></script>
-    <script src="js/red-button-fix.js"></script>
 
-    <!-- CSS de fixes - Cargar al final -->
-    <link rel="stylesheet" href="css/no-expansion-final.css" />
-    <link rel="stylesheet" href="css/modal-styles.css" />
-    <link rel="stylesheet" href="css/final-no-expand.css" />
-    <link rel="stylesheet" href="css/uniform-button-size.css" />
-    <link rel="stylesheet" href="css/header-presentation-fix.css" />
+    <!-- Configuración funcional -->
+    <script src="CONFIG.js"></script>
+
+    <!-- Script principal -->
+    <script src="js/script.js"></script>
   </body>
 </html>

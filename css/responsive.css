@@ -1,0 +1,296 @@
+/* ========================================
+   DISEÑO RESPONSIVO - MEDIA QUERIES
+   Versión consolidada para diferentes dispositivos
+   ======================================== */
+
+/* ========================================
+   MÓVILES PEQUEÑOS (max-width: 640px)
+   ======================================== */
+@media (max-width: 640px) {
+  :root {
+    font-size: 14px;
+  }
+
+  body {
+    padding: 15px 10px;
+  }
+
+  .profile-card {
+    margin: 1rem;
+  }
+
+  .links-container {
+    padding: var(--spacing-md) var(--spacing-xs) var(--spacing-xs);
+    gap: var(--spacing-md);
+  }
+
+  /* Imagen de perfil más pequeña */
+  .profile-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* Textos ajustados */
+  .artist-name {
+    font-size: 1.8rem;
+  }
+
+  .artist-title {
+    font-size: 1.1rem;
+  }
+
+  .artist-description {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    max-width: 75%;
+  }
+
+  /* Botones más compactos */
+  .nav-button {
+    height: 52px;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  .nav-button i {
+    font-size: 16px;
+  }
+
+  .nav-buttons {
+    gap: var(--spacing-sm);
+    padding: 0;
+  }
+
+
+
+  /* Footer ajustado */
+  .footer-content {
+    font-size: 0.7rem;
+  }
+
+  /* Línea divisoria superior más pequeña */
+  .divider-top {
+    width: 70%;
+    margin: 12px auto 10px;
+  }
+}
+
+/* ========================================
+   TABLETS (641px - 1024px)
+   ======================================== */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .profile-card {
+    max-width: 480px;
+  }
+
+  .links-container {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+}
+
+/* ========================================
+   DESKTOP (min-width: 1024px)
+   ======================================== */
+@media (min-width: 1024px) {
+  body {
+    padding-top: 30px;
+  }
+
+  .profile-card {
+    max-width: 520px;
+    margin: 30px auto;
+  }
+
+  .links-container {
+    padding: var(--spacing-3xl) var(--spacing-sm) var(--spacing-lg);
+  }
+
+  /* Textos más grandes */
+  .artist-name {
+    font-size: 2.5rem;
+  }
+
+  .artist-title {
+    font-size: 1.4rem;
+  }
+
+  .artist-description {
+    font-size: 1rem;
+    padding: 10px 16px;
+    max-width: 70%;
+  }
+}
+
+/* ========================================
+   PANTALLAS MUY GRANDES (min-width: 1440px)
+   ======================================== */
+@media (min-width: 1440px) {
+  .profile-card {
+    max-width: 560px;
+  }
+}
+
+/* ========================================
+   ORIENTACIÓN LANDSCAPE EN MÓVILES
+   ======================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  body {
+    padding: 10px;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .artist-name {
+    font-size: 1.5rem;
+  }
+
+  .nav-button {
+    height: 48px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   PANTALLAS MUY PEQUEÑAS (max-width: 380px)
+   ======================================== */
+@media (max-width: 380px) {
+  .profile-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .artist-name {
+    font-size: 1.5rem;
+  }
+
+  .artist-description {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    max-width: 80%;
+  }
+
+  .nav-button {
+    height: 50px;
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  /* Línea divisoria superior */
+  .divider-top {
+    width: 75%;
+    margin: 10px auto 8px;
+  }
+}
+
+/* ========================================
+   ALTURA REDUCIDA (max-height: 600px)
+   ======================================== */
+@media (max-height: 600px) {
+  body {
+    padding-top: 10px;
+  }
+
+  .profile-card {
+    margin-top: 10px;
+  }
+
+  .links-container {
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* ========================================
+   PANTALLAS ALTAS (min-height: 900px)
+   ======================================== */
+@media (min-height: 900px) {
+  .profile-card {
+    margin: 40px auto;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  body {
+    background: white;
+  }
+
+  .profile-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .nav-button-disabled {
+    display: none;
+  }
+}
+
+/* ========================================
+   HOVER DISPONIBLE (dispositivos con puntero)
+   ======================================== */
+@media (hover: hover) and (pointer: fine) {
+  .nav-button:not(.nav-button-disabled):hover {
+    transform: translateY(-2px);
+  }
+
+  .artist-description:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* ========================================
+   TOUCH DEVICES
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+  .nav-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ========================================
+   MODO OSCURO (preferencia del sistema)
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  /* Ya está en modo oscuro por defecto */
+}
+
+/* ========================================
+   ALTA RESOLUCIÓN / RETINA
+   ======================================== */
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+  .profile-image img {
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ========================================
+   ANIMACIONES REDUCIDAS (accesibilidad)
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .nav-button:hover {
+    transform: none !important;
+  }
+}

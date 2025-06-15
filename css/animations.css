@@ -1,0 +1,371 @@
+/* ========================================
+   ANIMACIONES Y TRANSICIONES
+   Efectos visuales y microinteracciones
+   ======================================== */
+
+/* ========================================
+   ANIMACIONES DE ENTRADA
+   ======================================== */
+@keyframes smooth-entry {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+/* ========================================
+   ANIMACIONES DE ELEMENTOS
+   ======================================== */
+
+/* Animación de entrada de la tarjeta */
+.profile-card {
+  animation: smooth-entry 0.8s ease-out;
+}
+
+/* Animación de la descripción */
+.artist-description {
+  animation: fadeIn 1s ease-in;
+}
+
+
+
+/* ========================================
+   ANIMACIONES DE ICONOS
+   ======================================== */
+
+
+
+/* Flotación sutil del emoji */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.artist-title .emoji-icon {
+  animation: subtle-float 3s ease-in-out infinite;
+}
+
+/* Pulso sutil para emojis */
+@keyframes subtle-pulse {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03) translateY(-1px);
+    opacity: 0.95;
+  }
+}
+
+/* ========================================
+   GRADIENTES ANIMADOS
+   ======================================== */
+
+/* Gradiente en movimiento para botón primario */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.nav-button-primary {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    #7B73FF 25%,
+    var(--color-primary-dark) 50%,
+    #7B73FF 75%,
+    var(--color-primary) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ========================================
+   EFECTO SHIMMER
+   ======================================== */
+@keyframes text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.artist-name {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.7) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: -200% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.artist-name:hover {
+  animation: text-shimmer 1.5s ease;
+}
+
+/* ========================================
+   SKELETON LOADING
+   ======================================== */
+@keyframes loading-wave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading-wave 1.5s ease-in-out infinite;
+  border-radius: var(--border-radius-xl);
+  z-index: -1;
+  opacity: 0;
+}
+
+/* ========================================
+   EASTER EGG - CÓDIGO KONAMI
+   ======================================== */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+body.konami-activated .profile-image {
+  animation: spin 1s ease-in-out;
+}
+
+body.konami-activated .nav-button-primary {
+  animation: rainbow 2s linear infinite;
+}
+
+/* ========================================
+   MICROINTERACCIONES
+   ======================================== */
+
+/* Hover del botón accent con emoji */
+.nav-button-accent {
+  position: relative;
+  overflow: visible;
+}
+
+.nav-button-accent span {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.nav-button-accent:hover span {
+  transform: translateX(-5px);
+}
+
+.nav-button-accent::after {
+  content: "💌";
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%) scale(0) rotate(-45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+}
+
+.nav-button-accent:hover::after {
+  transform: translateY(-50%) scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* ========================================
+   TRANSICIONES BASE
+   ======================================== */
+
+/* Transiciones para botones */
+.nav-button {
+  transition: 
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Transiciones para imágenes */
+.profile-image,
+.profile-image img {
+  transition: 
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* Transiciones para textos */
+.artist-name,
+.artist-title,
+.artist-description {
+  transition: 
+    color 0.3s ease,
+    transform 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+/* ========================================
+   ESTADOS DE FOCUS ANIMADOS
+   ======================================== */
+.nav-button:focus-visible {
+  animation: focus-pulse 1s ease-in-out;
+}
+
+@keyframes focus-pulse {
+  0% {
+    outline-offset: 2px;
+  }
+  50% {
+    outline-offset: 4px;
+  }
+  100% {
+    outline-offset: 2px;
+  }
+}
+
+/* ========================================
+   OPTIMIZACIÓN DE RENDIMIENTO
+   ======================================== */
+
+/* Elementos que se animan frecuentemente */
+.nav-button,
+.profile-image,
+.artist-name {
+  will-change: transform;
+}
+
+/* Resetear will-change después de animaciones */
+.nav-button:not(:hover),
+.profile-image:not(:hover),
+.artist-name:not(:hover) {
+  will-change: auto;
+}
+
+/* ========================================
+   ANIMACIONES PARA AOS
+   ======================================== */
+[data-aos] {
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(20px);
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translateY(0);
+}
+
+[data-aos="zoom-in"] {
+  transform: scale(0.9);
+}
+
+[data-aos="zoom-in"].aos-animate {
+  transform: scale(1);
+}
+
+/* ========================================
+   ANIMACIÓN DE LÍNEA DIVISORIA
+   ======================================== */
+@keyframes lineExpand {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.divider-top {
+  animation: lineExpand 0.8s ease-out 0.6s both;
+  transform-origin: center;
+}
+
+/* Efecto de brillo para la línea inferior */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.divider {
+  background-size: 200% 100%;
+  animation: shimmer 8s linear infinite;
+}

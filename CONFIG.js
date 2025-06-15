@@ -1,273 +1,318 @@
 /* ========================================
-   ARCHIVO DE CONFIGURACIÓN - PERSONALIZACIÓN
-   Guía para adaptar este clon de Linktree
+   ARCHIVO DE CONFIGURACIÓN FUNCIONAL
+   Actualiza dinámicamente el contenido de la página
    ======================================== */
-
-// ========================================
-// CONFIGURACIÓN DE DATOS PERSONALES
-// Cambia estos valores para personalizar
-// ========================================
+/**
+ * Objeto de configuración principal para la aplicación Linktree Clone.
+ *
+ * Edita los valores de este objeto para personalizar tu página:
+ * - Cambia los datos en la sección "personal" para actualizar tu nombre, título, descripción, etc.
+ * - Modifica las rutas en "imagenes" para cambiar tu foto de perfil o favicon.
+ * - Agrega, elimina o edita objetos en el array "enlaces" para mostrar tus redes sociales o enlaces favoritos.
+ *   - Para activar un enlace, pon 'activo: true'. Para ocultarlo, usa 'activo: false'.
+ *   - Puedes personalizar el color de cada botón usando la propiedad "estilos".
+ * - Ajusta los colores principales en la sección "colores".
+ * - Cambia los textos y metadatos SEO en la sección "seo".
+ * - Configura animaciones en la sección "animaciones".
+ *
+ * @typedef {Object} CONFIG
+ * @property {Object} personal - Información personal del usuario.
+ * @property {string} personal.nombre - Nombre completo.
+ * @property {string} personal.titulo - Título profesional.
+ * @property {string} personal.descripcion - Descripción breve.
+ * @property {string} personal.copyright_year - Año de copyright.
+ * @property {string} personal.firma - Firma o iniciales.
+ *
+ * @property {Object} imagenes - Rutas de imágenes utilizadas.
+ * @property {string} imagenes.perfil - Ruta de la imagen de perfil.
+ * @property {string} imagenes.favicon - Ruta del favicon.
+ *
+ * @property {Array<Object>} enlaces - Lista de enlaces y redes sociales.
+ * @property {string} enlaces[].id - Identificador único del enlace.
+ * @property {string} [enlaces[].url] - URL del enlace (opcional).
+ * @property {string} enlaces[].texto - Texto descriptivo del enlace.
+ * @property {string} enlaces[].icono - Clase del icono (FontAwesome).
+ * @property {string} enlaces[].tipo - Tipo de botón (primary, secondary, accent, etc.).
+ *   // El valor de "tipo" determina el color del botón. Si quieres que un botón destaque visualmente sobre los demás, usa "accent".
+ *   // Por ejemplo, puedes poner tipo: "accent" en el botón de portfolio para que resalte y llame más la atención del usuario.
+ * @property {boolean} enlaces[].activo - Indica si el enlace está activo y visible.
+ * @property {Object} [enlaces[].estilos] - Estilos personalizados para el botón (opcional).
+ *
+ * @property {Object} colores - Paleta de colores personalizada.
+ * @property {string} colores.primario - Color primario.
+ * @property {string} colores.primarioOscuro - Variante oscura del color primario.
+ * @property {string} colores.acento - Color de acento.
+ * @property {string} colores.acentoOscuro - Variante oscura del acento.
+ * @property {string} colores.fondo - Color de fondo principal.
+ * @property {string} colores.tarjeta - Color de fondo para tarjetas.
+ *
+ * @property {Object} seo - Configuración SEO y metadatos.
+ * @property {string} seo.titulo - Título para SEO.
+ * @property {string} seo.descripcion - Descripción para SEO.
+ * @property {string} seo.keywords - Palabras clave para SEO.
+ * @property {string} seo.url - URL principal del sitio.
+ * @property {string} seo.imagen - Imagen para SEO.
+ *
+ * @property {Object} animaciones - Configuración técnica de animaciones.
+ * @property {number} animaciones.duracionAOS - Duración de animaciones AOS en ms.
+ * @property {boolean} animaciones.habilitarParallax - Habilita efecto parallax.
+ * @property {boolean} animaciones.habilitarKonami - Habilita el código Konami.
+ *
+ * @example
+ * // Para activar un botón (por ejemplo, el de portfolio), cambia 'activo' a true y puedes poner 'tipo: "accent"' si quieres que ese botón resalte visualmente.
+ * // Usar "accent" hace que el botón use el color de acento definido en la configuración, ayudando a destacar enlaces importantes.
+ * // {
+ * //   id: "portfolio",
+ * //   texto: "See my work",
+ * //   icono: "fas fa-briefcase",
+ * //   tipo: "accent", // Usa "accent" para destacar este botón sobre los demás
+ * //   activo: true
+ * // }
+ */
 
 const CONFIG = {
-    // ========================================
-    // INFORMACIÓN PERSONAL
-    // ========================================
-    personal: {
-        nombre: "Heily Madelay Tandazo",
-        titulo: "Backend & AI Developer",
-        emoji_titulo: "🔐",                      // Emoji junto al título
-        tagline: "Creating secure and intelligent solutions for the digital world",
-        descripcion: "Focused on Data Security & Intelligent Automation",
-        emoji_descripcion: "🤖",                 // Emoji al final
-        copyright_year: "2025",
-        firma: "HM"                              // Iniciales para la firma
-    },
+  // ========================================
+  // INFORMACIÓN PERSONAL
+  // ========================================
+  personal: {
+    nombre: "Heily Madelay Tandazo",
+    titulo: "Backend & AI Developer",
+    descripcion:
+      "Turning complex problems into secure, intelligent solutions that scale.",
+    copyright_year: "2025",
+    firma: "HM",
+  },
 
-    // ========================================
-    // ENLACES Y REDES SOCIALES
-    // ========================================
-    enlaces: {
-        // Enlaces activos
-        linkedin: {
-            url: "https://www.linkedin.com/in/heilymajtan/",
-            texto: "Let's connect professionally",
-            icono: "fab fa-linkedin",
-            tipo: "primary"                      // primary, secondary, accent
-        },
-        
-        github: {
-            url: "https://github.com/HeilyMadelay-hub",
-            texto: "Explore my code",
-            icono: "fab fa-github",
-            tipo: "secondary"
-        },
-        
-        email: {
-            url: "mailto:heilymadelayajtan@icloud.com",
-            texto: "Start a conversation",
-            icono: "fas fa-envelope",
-            tipo: "accent"                       // Botón rojo
-        },
-        
-        // Enlaces deshabilitados (próximamente)
-        tiktok: {
-            texto: "Follow my tech journey",
-            icono: "fab fa-tiktok",
-            deshabilitado: true
-        },
-        
-        portfolio: {
-            texto: "See my work",
-            icono: "fas fa-briefcase",
-            deshabilitado: true
-        },
-        
-        newsletter: {
-            texto: "View my newsletter",
-            icono: "fas fa-newspaper",
-            deshabilitado: true
-        },
-        
-        leetcode: {
-            texto: "View my LeetCode",
-            icono: "fas fa-code",
-            deshabilitado: true
-        }
-    },
+  // ========================================
+  // RUTAS DE ARCHIVOS
+  // ========================================
+  imagenes: {
+    perfil: "img/imgfotoperfil.jpeg",
+    favicon: "img/favicon.svg",
+  },
 
-    // ========================================
-    // COLORES PERSONALIZADOS
-    // ========================================
-    colores: {
-        // Colores principales
-        primario: "#6C63FF",                     // Morado
-        primario_oscuro: "#5547d9",
-        
-        acento: "#FF3B3B",                       // Rojo
-        acento_oscuro: "#E02E2E",
-        
-        // Colores de fondo
-        fondo_tarjeta: "rgba(255, 255, 255, 0.1)",
-        fondo_overlay: "rgba(0, 0, 0, 0.3)",
-        
-        // Colores de texto
-        texto_blanco: "#FFFFFF",
-        texto_claro: "rgba(255, 255, 255, 0.85)"
+  // ========================================
+  // ENLACES Y REDES SOCIALES
+  // ========================================
+  enlaces: [
+    {
+      id: "linkedin",
+      url: "https://www.linkedin.com/in/heilymajtan/",
+      texto: "Let's connect professionally",
+      icono: "fab fa-linkedin",
+      tipo: "primary",
+      activo: true,
     },
-
-    // ========================================
-    // CONFIGURACIÓN DE IMÁGENES
-    // ========================================
-    imagenes: {
-        perfil: "img/imgfotoperfil.jpeg",
-        fondo: "img/fondo.jpeg",
-        favicon: "img/favicon.svg",
-        
-        // Placeholder si falla la imagen de perfil
-        placeholder_svg: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%236C63FF'/%3E%3Ctext x='90' y='90' text-anchor='middle' dy='.3em' fill='white' font-family='Arial' font-size='60'%3EHM%3C/text%3E%3C/svg%3E"
+    {
+      id: "github",
+      url: "https://github.com/HeilyMadelay-hub",
+      texto: "Explore my code",
+      icono: "fab fa-github",
+      tipo: "secondary",
+      estilos: {
+        backgroundColor: "#333",
+        color: "#fff",
+      },
+      activo: true,
     },
-
-    // ========================================
-    // CONFIGURACIÓN DE ANIMACIONES
-    // ========================================
-    animaciones: {
-        duracion_aos: 800,                       // Duración de animaciones AOS
-        delay_base: 50,                          // Delay entre elementos
-        duracion_modal: 300,                     // Duración animación modal
-        
-        // Activar/desactivar efectos
-        pulso_emoji: true,                       // Animación del emoji robot
-        gradiente_animado: true,                 // Gradiente en botón primario
-        shimmer_nombre: true,                    // Brillo en el nombre al hover
-        parallax_fondo: true                     // Efecto parallax en el fondo
+    {
+      id: "tiktok",
+      texto: "Follow my tech journey",
+      icono: "fab fa-tiktok",
+      tipo: "secondary",
+      activo: false,
     },
-
-    // ========================================
-    // MENSAJES PERSONALIZADOS
-    // ========================================
-    mensajes: {
-        coming_soon: {
-            titulo: "Coming Soon!",
-            icono: "fas fa-hard-hat",
-            texto: "This section is not available yet. We're working on it!"
-        },
-        
-        sin_conexion: {
-            titulo: "No connection",
-            icono: "fas fa-wifi",
-            texto: "It seems you don't have an Internet connection"
-        },
-        
-        easter_egg: {
-            titulo: "🎮 Easter Egg!",
-            icono: "fas fa-gamepad",
-            texto: "You found the secret code! You're awesome! 🎉"
-        }
+    {
+      id: "email",
+      url: "mailto:heilymadelayajtan@icloud.com",
+      texto: "Start a conversation",
+      icono: "fas fa-envelope",
+      tipo: "accent",
+      activo: true,
     },
-
-    // ========================================
-    // SEO Y METADATOS
-    // ========================================
-    seo: {
-        titulo: "Heily Madelay Tandazo | Backend & AI Developer",
-        descripcion: "Backend & AI Developer specializing in data security and intelligent automation",
-        keywords: "backend developer, AI developer, data security, automation, programming",
-        url: "https://heilymadelay.com",
-        
-        // Open Graph para redes sociales
-        og_imagen: "img/imgfotoperfil.jpeg",
-        twitter_card: "summary_large_image"
+    {
+      id: "portfolio",
+      texto: "See my work",
+      icono: "fas fa-briefcase",
+      tipo: "secondary",
+      activo: false,
     },
+    {
+      id: "newsletter",
+      texto: "View my newsletter",
+      icono: "fas fa-newspaper",
+      tipo: "secondary",
+      activo: false,
+    },
+    {
+      id: "leetcode",
+      url: "https://leetcode.com/u/heilymadelay-hub/",
+      texto: "View my LeetCode account",
+      icono: "fas fa-code",
+      tipo: "secondary",
+      estilos: {
+        backgroundColor: "#FFD700",
+        color: "#000",
+        border: "2px solid #000",
+      },
+      activo: true,
+    },
+  ],
 
-    // ========================================
-    // CONFIGURACIÓN TÉCNICA
-    // ========================================
-    tecnico: {
-        // Lazy loading de imágenes
-        lazy_loading: true,
-        
-        // Service Worker para PWA
-        service_worker: false,                   // Activar solo con HTTPS
-        
-        // Código Konami (easter egg)
-        konami_habilitado: true,
-        konami_codigo: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'],
-        
-        // Debugging
-        mostrar_logs: false                      // Logs en consola
-    }
+  // ========================================
+  // COLORES PERSONALIZADOS
+  // ========================================
+  colores: {
+    primario: "#6C63FF",
+    primarioOscuro: "#5547d9",
+    acento: "#FF3B3B",
+    acentoOscuro: "#E02E2E",
+    fondo: "#1a1f36",
+    tarjeta: "#1f3b4d",
+  },
+
+  // ========================================
+  // SEO Y METADATOS
+  // ========================================
+  seo: {
+    titulo: "Heily Madelay Tandazo | Backend & AI Developer",
+    descripcion:
+      "Backend & AI Developer specializing in data security and intelligent automation",
+    keywords:
+      "backend developer, AI developer, data security, automation, programming",
+    url: "https://heilymadelay.com",
+    imagen: "img/imgfotoperfil.jpeg",
+  },
+
+  // ========================================
+  // CONFIGURACIÓN TÉCNICA
+  // ========================================
+  animaciones: {
+    duracionAOS: 800,
+    habilitarParallax: true,
+    habilitarKonami: true,
+  },
 };
 
 // ========================================
-// CÓMO USAR ESTA CONFIGURACIÓN
+// FUNCIÓN PARA APLICAR LA CONFIGURACIÓN
 // ========================================
+function applyConfig() {
+  // Actualizar información personal
+  const artistName = document.querySelector(".artist-name");
+  if (artistName) artistName.textContent = CONFIG.personal.nombre;
 
-/*
-1. CAMBIAR INFORMACIÓN PERSONAL:
-   - Edita los valores en CONFIG.personal
-   - Actualiza los emojis según tu preferencia
-   
-2. AGREGAR/MODIFICAR ENLACES:
-   - Añade nuevos objetos en CONFIG.enlaces
-   - Usa "deshabilitado: true" para botones "Coming Soon"
-   - Tipos disponibles: primary, secondary, accent
-   
-3. PERSONALIZAR COLORES:
-   - Modifica los valores hex en CONFIG.colores
-   - Usa https://coolors.co para paletas de colores
-   
-4. CAMBIAR IMÁGENES:
-   - Reemplaza los archivos en la carpeta img/
-   - Mantén los mismos nombres o actualiza CONFIG.imagenes
-   
-5. AJUSTAR ANIMACIONES:
-   - Modifica duraciones en CONFIG.animaciones
-   - Desactiva efectos poniendo false
-   
-6. SEO Y METADATOS:
-   - Actualiza CONFIG.seo con tu información
-   - Importante para compartir en redes sociales
-   
-7. APLICAR CAMBIOS:
-   - Este archivo es una GUÍA
-   - Los cambios reales se hacen en:
-     * index.html (estructura y textos)
-     * css/styles.css (colores en :root)
-     * js/script.js (comportamientos)
-*/
+  const artistTitle = document.querySelector(".artist-title .title-text");
+  if (artistTitle) artistTitle.textContent = CONFIG.personal.titulo;
 
-// ========================================
-// EJEMPLO DE IMPLEMENTACIÓN
-// ========================================
+  const artistDescription = document.querySelector(".subtitle-tagline");
+  if (artistDescription)
+    artistDescription.innerHTML = CONFIG.personal.descripcion;
 
-/*
-// En index.html, cambiarías:
-<h1 class="artist-name">TU_NOMBRE</h1>
-<h2 class="artist-title">
-    <span class="emoji-icon">TU_EMOJI</span>
-    TU_TITULO
-</h2>
+  // Actualizar copyright
+  const copyright = document.querySelector(".copyright-text");
+  if (copyright) {
+    copyright.innerHTML = `© ${CONFIG.personal.copyright_year} All Rights Reserved - ${CONFIG.personal.nombre}<br>${CONFIG.personal.firma}`;
+  }
 
-// En styles.css, cambiarías:
-:root {
-    --color-primary: TU_COLOR_PRIMARIO;
-    --color-accent: TU_COLOR_ACENTO;
+  // Actualizar imagen de perfil
+  const profileImg = document.querySelector(".profile-image img");
+  if (profileImg) {
+    profileImg.src = CONFIG.imagenes.perfil;
+    profileImg.alt = CONFIG.personal.nombre + " - " + CONFIG.personal.titulo;
+  }
+
+  // Actualizar favicon
+  const favicon = document.querySelector('link[rel="icon"]');
+  if (favicon) favicon.href = CONFIG.imagenes.favicon;
+
+  // Actualizar metadatos SEO
+  document.title = CONFIG.seo.titulo;
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) metaDescription.content = CONFIG.seo.descripcion;
+
+  const metaKeywords = document.querySelector('meta[name="keywords"]');
+  if (metaKeywords) metaKeywords.content = CONFIG.seo.keywords;
+
+  // Actualizar colores CSS
+  updateColors();
+
+  // Generar botones dinámicamente
+  generateButtons();
 }
 
-// Para agregar un nuevo botón:
-<a href="TU_URL"
-   class="nav-button nav-button-secondary"
-   target="_blank"
-   rel="noopener noreferrer">
-    <i class="TU_ICONO"></i>
-    <span>TU_TEXTO</span>
-</a>
-*/
+// ========================================
+// FUNCIÓN PARA ACTUALIZAR COLORES
+// ========================================
+function updateColors() {
+  const root = document.documentElement;
+  root.style.setProperty("--color-primary", CONFIG.colores.primario);
+  root.style.setProperty("--color-primary-dark", CONFIG.colores.primarioOscuro);
+  root.style.setProperty("--color-accent", CONFIG.colores.acento);
+  root.style.setProperty("--color-accent-dark", CONFIG.colores.acentoOscuro);
+
+  document.body.style.backgroundColor = CONFIG.colores.fondo;
+}
 
 // ========================================
-// RECURSOS ÚTILES
+// FUNCIÓN PARA GENERAR BOTONES
 // ========================================
+function generateButtons() {
+  const navButtons = document.querySelector(".nav-buttons");
+  if (!navButtons) return;
 
-/*
-ICONOS:
-- Font Awesome: https://fontawesome.com/icons
-- Emojipedia: https://emojipedia.org
+  // Limpiar botones existentes
+  navButtons.innerHTML = "";
 
-COLORES:
-- Coolors: https://coolors.co
-- Color Hunt: https://colorhunt.co
+  // Generar cada botón según la configuración
+  CONFIG.enlaces.forEach((enlace, index) => {
+    if (enlace.activo) {
+      // Botón activo
+      const button = document.createElement("a");
+      button.href = enlace.url;
+      button.className = `nav-button nav-button-${enlace.tipo}`;
+      button.target = "_blank";
+      button.rel = "noopener noreferrer";
+      button.setAttribute("data-aos", "fade-up");
+      button.setAttribute("data-aos-delay", 400 + index * 50);
+      button.setAttribute("aria-label", enlace.texto);
 
-FUENTES:
-- Google Fonts: https://fonts.google.com
+      // Aplicar estilos personalizados si existen
+      if (enlace.estilos) {
+        Object.assign(button.style, enlace.estilos);
+      }
 
-OPTIMIZACIÓN DE IMÁGENES:
-- TinyPNG: https://tinypng.com
-- Squoosh: https://squoosh.app
+      button.innerHTML = `
+                <i class="${enlace.icono}" aria-hidden="true"></i>
+                <span>${enlace.texto}</span>
+            `;
 
-GENERADOR DE FAVICON:
-- Favicon.io: https://favicon.io
+      navButtons.appendChild(button);
+    } else {
+      // Botón deshabilitado
+      const button = document.createElement("button");
+      button.className = `nav-button nav-button-secondary nav-button-disabled`;
+      button.setAttribute("data-aos", "fade-up");
+      button.setAttribute("data-aos-delay", 400 + index * 50);
+      button.setAttribute("aria-label", enlace.texto + " - Coming soon");
 
-TESTING:
-- GTmetrix: https://gtmetrix.com
-- PageSpeed Insights: https://pagespeed.web.dev
-*/
+      button.innerHTML = `
+                <i class="${enlace.icono}" aria-hidden="true"></i>
+                <span>${enlace.texto}</span>
+            `;
+
+      navButtons.appendChild(button);
+    }
+  });
+}
+
+// ========================================
+// EXPORTAR CONFIGURACIÓN Y FUNCIONES
+// ========================================
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { CONFIG, applyConfig };
+} else {
+  window.CONFIG = CONFIG;
+  window.applyConfig = applyConfig;
+}

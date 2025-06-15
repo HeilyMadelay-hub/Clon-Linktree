@@ -1,38 +1,24 @@
 /* ========================================
    ARCHIVO PRINCIPAL DE ESTILOS CSS
+   Versión consolidada y optimizada
    Autor: Heily Madelay Tandazo
-   Descripción: Estilos principales para el clon de Linktree
    ======================================== */
 
 /* ========================================
    VARIABLES CSS - SISTEMA DE DISEÑO
-   Define colores, espaciados, fuentes, etc. reutilizables
    ======================================== */
 :root {
-  /* ========================================
-       PALETA DE COLORES PROFESIONAL
-       ======================================== */
-
-  /* Color primario (morado) y su versión oscura */
+  /* Colores principales */
   --color-primary: #6c63ff;
   --color-primary-dark: #5547d9;
-
-  /* Color de acento (rojo) y su versión oscura */
   --color-accent: #ff3b3b;
   --color-accent-dark: #e02e2e;
-
-  /* Color secundario (gris oscuro) */
   --color-secondary: #2d3748;
-
-  /* Color de éxito (verde) */
   --color-success: #48bb78;
-
-  /* ========================================
-       COLORES NEUTROS
-       Escala de grises del más claro al más oscuro
-       ======================================== */
+  
+  /* Colores neutros */
   --color-white: #ffffff;
-  --color-gray-100: #f7fafc; /* Gris más claro */
+  --color-gray-100: #f7fafc;
   --color-gray-200: #edf2f7;
   --color-gray-300: #e2e8f0;
   --color-gray-400: #cbd5e0;
@@ -40,275 +26,177 @@
   --color-gray-600: #718096;
   --color-gray-700: #4a5568;
   --color-gray-800: #2d3748;
-  --color-gray-900: #1a202c; /* Gris más oscuro */
-
-  /* ========================================
-       SISTEMA DE ESPACIADO (BASE 4)
-       Usa múltiplos de 4px para consistencia
-       ======================================== */
-  --spacing-xs: 4px; /* Extra pequeño */
-  --spacing-sm: 8px; /* Pequeño */
-  --spacing-md: 16px; /* Mediano */
-  --spacing-lg: 32px; /* Grande */
-  --spacing-xl: 64px; /* Extra grande */
-  --spacing-2xl: 128px; /* Doble extra grande */
-
-  /* ========================================
-       TIPOGRAFÍA
-       Fuentes principales y secundarias
-       ======================================== */
+  --color-gray-900: #1a202c;
+  
+  /* Sistema de espaciado (base 8px) */
+  --spacing-unit: 8px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 40px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 56px;
+  --spacing-4xl: 64px;
+  
+  /* Tipografía */
   --font-primary: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-secondary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* ========================================
-       TAMAÑOS DE FUENTE
-       Sistema de tamaños consistente
-       ======================================== */
-  --font-size-xs: 0.75rem; /* 12px */
-  --font-size-sm: 0.875rem; /* 14px */
-  --font-size-base: 1rem; /* 16px */
-  --font-size-lg: 1.125rem; /* 18px */
-  --font-size-xl: 1.25rem; /* 20px */
-  --font-size-2xl: 1.5rem; /* 24px */
-  --font-size-3xl: 2rem; /* 32px */
-  --font-size-4xl: 2.5rem; /* 40px */
-
-  /* ========================================
-       ALTURAS DE LÍNEA
-       Para mejor legibilidad
-       ======================================== */
-  --line-height-tight: 1.25; /* Texto compacto */
-  --line-height-normal: 1.6; /* Texto normal */
-  --line-height-relaxed: 1.75; /* Texto espaciado */
-
-  /* ========================================
-       SOMBRAS
-       Diferentes niveles de elevación
-       ======================================== */
+  
+  /* Tamaños de fuente */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  
+  /* Alturas de línea */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.75;
+  
+  /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 20px rgba(108, 99, 255, 0.3); /* Sombra con brillo */
-
-  /* ========================================
-       BORDES REDONDEADOS
-       Radio de esquinas
-       ======================================== */
+  --shadow-glow: 0 0 20px rgba(108, 99, 255, 0.3);
+  
+  /* Bordes redondeados */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
   --border-radius-xl: 16px;
-  --border-radius-full: 9999px; /* Completamente redondo */
-
-  /* ========================================
-       TRANSICIONES
-       Duraciones de animación
-       ======================================== */
+  --border-radius-full: 9999px;
+  
+  /* Transiciones */
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
   --transition-slow: 300ms ease;
-  --transition-bounce: cubic-bezier(
-    0.68,
-    -0.55,
-    0.265,
-    1.55
-  ); /* Efecto rebote */
+  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* ========================================
    RESET Y ESTILOS BASE
-   Normaliza estilos entre navegadores
    ======================================== */
 * {
-  margin: 0; /* Elimina márgenes por defecto */
-  padding: 0; /* Elimina padding por defecto */
-  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ========================================
-   ESTILOS HTML
-   Configuración base del documento
-   ======================================== */
 html {
-  font-size: 16px; /* Tamaño base de fuente */
-  scroll-behavior: smooth; /* Scroll suave */
-  -webkit-font-smoothing: antialiased; /* Mejora renderizado de fuentes en Safari */
-  -moz-osx-font-smoothing: grayscale; /* Mejora renderizado de fuentes en Firefox */
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ========================================
-   ESTILOS BODY
-   Configuración del cuerpo del documento
-   ======================================== */
 body {
   font-family: var(--font-secondary);
   font-weight: 400;
   line-height: var(--line-height-normal);
   color: var(--color-gray-900);
-  background-color: #1a1f36; /* Azul oscuro */
+  background-color: #1a1f36;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: var(--spacing-md);
+  align-items: center;
+  padding: 20px 16px;
   margin: 0;
   overflow-x: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* ========================================
-   ESTILOS DEL CUERPO Y FONDO
-   ======================================== */
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: #1a1f36; /* Fondo azul oscuro */
-  position: relative;
+body.fonts-loaded {
+  opacity: 1;
 }
 
-/* Contenedor principal ajustado */
-.container {
-  margin: 0 auto;
-  padding: 1.5rem;
-  max-width: 80%;
-  width: 400px;
-  background-color: #1f2937;
-  border-radius: 20px;
-  box-shadow: var(--shadow-xl);
-  height: auto;
-  min-height: 0;
-}
-
-/* Mantener el contenedor principal con scroll */
-.container {
-  position: relative;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.95); /* Fondo casi blanco sólido */
-  border-radius: var(--border-radius-xl);
-  box-shadow: var(--shadow-xl);
-  backdrop-filter: none; /* Eliminamos el efecto de cristal */
-  -webkit-backdrop-filter: none;
-  margin: 1rem auto; /* Reducido */
-  padding: 1.5rem; /* Reducido */
-  max-width: 80%; /* Reducido */
-  width: 400px; /* Reducido de 600px */
-  background-color: #1f2937; /* Fondo oscuro para el card */
-  border-radius: 20px;
-  box-shadow: var(--shadow-xl);
-}
-
-/* ========================================
-   SKIP TO CONTENT - ACCESIBILIDAD
-   Enlace oculto para saltar al contenido principal
-   ======================================== */
-.skip-to-content {
-  position: absolute;
-  top: -40px; /* Oculto fuera de la pantalla */
-  left: 0;
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: var(--spacing-sm) var(--spacing-md);
-  text-decoration: none;
-  border-radius: var(--border-radius-md);
-  z-index: 9999; /* Encima de todo */
-  transition: top var(--transition-base);
-}
-
-/* Muestra el enlace cuando recibe focus (teclado) */
-.skip-to-content:focus {
-  top: var(--spacing-md);
-}
-
-/* ========================================
-   FONDO MEJORADO
-   Sistema de capas para el fondo
-   ======================================== */
-.background-wrapper {
-  position: relative; /* Cambiado de absolute a relative */
+main {
   width: 100%;
-  background: none;
-}
-
-.background {
-  display: none; /* Ya no necesitamos esta capa */
-}
-
-.background-blur {
-  display: none; /* Ya no necesitamos esta capa */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ========================================
-   TARJETA DE PERFIL - GLASSMORPHISM
-   Contenedor principal con efecto de vidrio
+   TARJETA DE PERFIL
    ======================================== */
 .profile-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 520px;
   margin: 0 auto;
   position: relative;
+  background-color: #1f3b4d;
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.glassmorphism {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--border-radius-xl);
-  overflow: hidden;
-  background-color: #1f3b4d; /* Nuevo color de fondo */
-}
-
-/* Efecto glassmorphism (vidrio esmerilado) */
-.glassmorphism {
-  background: rgba(255, 255, 255, 0.1); /* Fondo blanco semi-transparente */
-  backdrop-filter: blur(10px); /* Desenfoque del fondo */
-  -webkit-backdrop-filter: blur(10px); /* Safari */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
-  border-radius: var(--border-radius-xl);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37),
-    /* Sombra principal */ inset 0 0 0 1px rgba(255, 255, 255, 0.1); /* Borde interno brillante */
-  overflow: visible;
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-/* Contenedor del contenido principal */
-.content {
-  position: relative;
-  z-index: 1;
-  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xs); /* Padding inferior mínimo */
-  width: 100%;
+.links-container {
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm);
   display: flex;
-  flex-direction: column; /* Elementos en columna */
-  align-items: center; /* Centrados */
-  gap: var(--spacing-xs); /* Espacio mínimo entre elementos */
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
 /* ========================================
-   IMAGEN DE PERFIL MEJORADA
-   Foto circular con efectos
+   IMAGEN DE PERFIL
    ======================================== */
 .profile-image-wrapper {
   position: relative;
 }
 
-/* Contenedor de la imagen de perfil */
 .profile-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%; /* Hace la imagen circular */
-  overflow: hidden; /* Oculta partes fuera del círculo */
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
   margin: 0 auto;
   position: relative;
   background-color: white;
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Imagen dentro del contenedor */
+.profile-image:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.25);
+}
+
 .profile-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cubre todo el espacio sin deformar */
+  object-fit: cover;
   display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: transform 0.3s ease;
 }
 
-/* Efecto de brillo alrededor de la imagen */
+.profile-image:hover img {
+  transform: scale(1.02);
+}
+
 .image-glow {
   position: absolute;
   top: -20px;
@@ -322,117 +210,187 @@ body {
   );
   opacity: 0;
   transition: opacity var(--transition-slow);
-  pointer-events: none; /* No interfiere con clics */
+  pointer-events: none;
 }
 
 /* ========================================
    INFORMACIÓN DEL PERFIL
-   Textos de nombre, título y descripción
    ======================================== */
 .profile-info {
   text-align: center;
   color: var(--color-white);
-  margin-bottom: var(--spacing-sm);
+  width: 100%;
+  position: relative;
 }
 
-/* Nombre principal */
 .artist-name {
   font-family: var(--font-primary);
-  font-size: var(--font-size-3xl);
-  font-weight: 700; /* Negrita */
-  margin-bottom: var(--spacing-xs);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
-    /* Sombra para legibilidad */ 0 0 20px rgba(108, 99, 255, 0.2); /* Brillo sutil */
-  letter-spacing: -0.02em; /* Letras ligeramente más juntas */
-  line-height: var(--line-height-tight);
+    0 0 30px rgba(108, 99, 255, 0.3);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #ffffff;
 }
 
-/* Título profesional */
 .artist-title {
   font-family: var(--font-primary);
-  font-size: var(--font-size-xl);
+  font-size: 1.2rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.95);
-  margin-bottom: var(--spacing-xs);
-  letter-spacing: 0.02em; /* Letras ligeramente espaciadas */
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Descripción */
 .artist-description {
   font-family: var(--font-secondary);
-  font-size: var(--font-size-base);
-  font-weight: 300; /* Delgada */
-  color: #000000 !important; /* Forzar el color negro */
-  line-height: var(--line-height-relaxed);
-  letter-spacing: 0.03em;
-  margin-bottom: 0;
-  background-color: #d3d3d3; /* Color gris */
-}
-
-/* Tagline o eslogan */
-.artist-tagline {
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-sm);
+  font-size: 0.9rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: var(--line-height-normal);
+  color: #000000;
+  line-height: 1.5;
   letter-spacing: 0.02em;
-  font-style: italic; /* Cursiva */
-  margin: 0;
-  padding: 0;
+  padding: 10px 16px;
+  background-color: #d3d3d3;
+  border-radius: var(--border-radius-lg);
+  max-width: 70%;
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: default;
+  margin-bottom: 0;
 }
 
-/* Iconos emoji en los textos */
-.emoji-icon {
-  display: inline-block;
-  margin: 0 var(--spacing-xs);
-  font-size: 1.2em; /* 20% más grande que el texto */
+.artist-description:hover {
+  background: #e0e0e0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle-tagline {
+  display: block;
 }
 
 /* ========================================
-   SISTEMA DE BOTONES MEJORADO
-   Diferentes estilos para cada tipo
+   LÍNEA DIVISORIA SUPERIOR
+   ======================================== */
+.divider-top {
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(108, 99, 255, 0.2) 15%,
+    rgba(108, 99, 255, 0.4) 35%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(108, 99, 255, 0.4) 65%,
+    rgba(108, 99, 255, 0.2) 85%,
+    transparent 100%
+  );
+  margin: 18px auto 16px;
+  position: relative;
+  overflow: visible;
+}
+
+.divider-top::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent
+  );
+}
+
+.divider-top::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(108, 99, 255, 0.4);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* ========================================
+   SISTEMA DE BOTONES
    ======================================== */
 .nav-buttons {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs); /* Espacio mínimo entre botones */
-  padding: 0 var(--spacing-xs);
+  gap: var(--spacing-sm);
+  padding: 0;
+  margin-bottom: 1px;
 }
 
-/* Estilos base para todos los botones */
 .nav-button {
   display: flex;
-  align-items: center; /* Centra contenido verticalmente */
-  justify-content: center; /* Centra contenido horizontalmente */
-  gap: var(--spacing-xs); /* Espacio mínimo entre icono y texto */
-  padding: var(--spacing-sm) var(--spacing-md); /* Padding reducido */
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  width: 100%;
+  height: 56px;
+  padding: 16px 32px;
   border: none;
-  border-radius: var(--border-radius-md); /* Radio de borde reducido */
+  border-radius: var(--border-radius-lg);
   font-family: var(--font-secondary);
-  font-size: var(--font-size-sm); /* Tamaño de fuente más pequeño */
+  font-size: var(--font-size-base);
   font-weight: 500;
-  text-decoration: none; /* Sin subrayado en enlaces */
+  text-decoration: none;
   text-align: center;
   cursor: pointer;
   transition: transform var(--transition-base),
-    box-shadow var(--transition-base), background-color var(--transition-base);
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-/* Iconos dentro de los botones */
 .nav-button i {
   font-size: 1.2em;
   width: 20px;
   text-align: center;
+  flex-shrink: 0;
 }
 
-/* ========================================
-   BOTÓN PRIMARIO (LinkedIn)
-   Botón principal con gradiente morado
-   ======================================== */
+/* Botón primario (LinkedIn) */
 .nav-button-primary {
   background: linear-gradient(
     135deg,
@@ -440,41 +398,31 @@ body {
     var(--color-primary-dark) 100%
   );
   color: var(--color-white);
-  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3),
-    /* Sombra de color */ var(--shadow-md); /* Sombra estándar */
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3), var(--shadow-md);
   font-weight: 600;
-  padding: var(--spacing-sm) var(--spacing-lg); /* Reducido el padding vertical */
 }
 
-/* Hover del botón primario */
 .nav-button-primary:hover {
-  transform: translateY(-2px); /* Sube 2px */
+  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(108, 99, 255, 0.4), var(--shadow-lg);
 }
 
-/* ========================================
-   BOTÓN SECUNDARIO (GitHub, etc.)
-   Botones transparentes con borde
-   ======================================== */
+/* Botón secundario */
 .nav-button-secondary {
-  background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+  background: rgba(255, 255, 255, 0.1);
   color: var(--color-white);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: var(--shadow-sm);
 }
 
-/* Hover del botón secundario (solo si no está deshabilitado) */
 .nav-button-secondary:hover:not(.nav-button-disabled) {
-  background: rgba(255, 255, 255, 0.15); /* Más opaco */
+  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* ========================================
-   BOTÓN ACCENT (Email)
-   Botón rojo llamativo
-   ======================================== */
+/* Botón accent (Email) */
 .nav-button-accent {
   background: linear-gradient(
     135deg,
@@ -482,378 +430,228 @@ body {
     var(--color-accent-dark) 100%
   );
   color: var(--color-white);
-  box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3),
-    /* Sombra roja */ var(--shadow-md);
-  position: relative;
-  overflow: visible;
+  box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3), var(--shadow-md);
 }
 
-/* Hover del botón accent */
 .nav-button-accent:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(255, 59, 59, 0.4), var(--shadow-lg);
 }
 
-/* ========================================
-   BOTÓN DESHABILITADO
-   Botones que aún no están disponibles
-   ======================================== */
+/* Botón deshabilitado */
 .nav-button-disabled {
-  opacity: 0.6; /* Semi-transparente */
-  cursor: not-allowed; /* Cursor de prohibido */
-  pointer-events: none !important; /* NO recibe eventos del mouse */
-  user-select: none !important; /* No seleccionable */
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  touch-action: none !important; /* No responde a toques */
-  -webkit-touch-callout: none !important;
-  -webkit-tap-highlight-color: transparent !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none !important;
+  user-select: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Estados del botón deshabilitado - sin cambios */
 .nav-button-disabled:hover,
 .nav-button-disabled:active,
 .nav-button-disabled:focus {
-  transform: none !important; /* No se mueve */
-  box-shadow: var(--shadow-sm) !important; /* Sombra mínima */
-  background: rgba(255, 255, 255, 0.1) !important;
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
-/* ========================================
-   ESTADOS FOCUS - ACCESIBILIDAD
-   Para navegación con teclado
-   ======================================== */
+/* Estados focus - accesibilidad */
 .nav-button:focus-visible {
-  outline: 3px solid var(--color-white); /* Borde blanco visible */
-  outline-offset: 2px; /* Separación del botón */
+  outline: 3px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 /* ========================================
-   EFECTO RIPPLE EN BOTONES
-   Solo para botones activos (no deshabilitados)
+   LINEA DIVISORIA DECORATIVA
    ======================================== */
-.nav-button:not(.nav-button-disabled)::before {
-  content: "";
+.divider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: var(--spacing-sm) 0;
+  position: relative;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.2) 80%,
+    transparent 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.divider-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(108, 99, 255, 0.5) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s infinite;
+}
+
+.divider-icon {
+  padding: 0 var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.divider-icon i {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-base);
+}
+
+.divider-icon:hover i {
+  color: var(--color-primary);
+  transform: rotate(360deg);
+  background: rgba(108, 99, 255, 0.2);
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(108, 99, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.2) 70%,
+    rgba(255, 255, 255, 0.1) 90%,
+    transparent 100%
+  );
+  margin: 0 auto 4px;
+  width: 85%;
+  position: relative;
+  overflow: visible;
+}
+
+.divider::before {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.3) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-/* Activa el ripple al hacer clic */
-.nav-button:not(.nav-button-disabled):active::before {
-  width: 300px;
-  height: 300px;
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
+  animation: moveDot 4s linear infinite;
 }
 
-/* Desactivar ripple en botones deshabilitados */
-.nav-button-disabled::before,
-.nav-button-disabled:active::before {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
+@keyframes moveDot {
+  0% {
+    left: 15%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 85%;
+    opacity: 0;
+  }
 }
 
-/* ========================================
-   FOOTER MEJORADO
-   Pie de página con copyright
-   ======================================== */
-.profile-footer {
-  width: 100%;
-  padding: 8px 0 4px 0;
-  margin-top: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+@keyframes pulseDivider {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
 }
 
 .footer-content {
   display: flex;
-  flex-direction: column; /* Apila los elementos verticalmente */
-  justify-content: center;
-  align-items: center; /* Centra horizontalmente */
-  padding: 4px 8px 2px 8px;
-  font-size: 0.75rem;
-  color: var(--color-gray-400);
-  min-height: 20px;
-  text-align: center; /* Asegura que el texto esté centrado */
-}
-
-/* copyright */
-.copyright {
-  margin: 2px 0;
-  padding: 0;
-  font-size: 0.75rem;
-  line-height: 1;
-  text-align: center;
-  order: 1; /* Asegura que el copyright aparezca primero */
-}
-
-.brand-signature {
-  font-size: 0.75rem;
-  opacity: 0.5;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  text-align: center;
-  order: 2; /* El HM aparecerá después */
-}
-
-/* Ajustar el espacio del último botón */
-.nav-buttons {
-  margin-bottom: 2px; /* Reducido al mínimo */
-}
-
-/* ========================================
-   INDICADOR DE SCROLL (REMOVIDO)
-   Ya no se usa porque la página es compacta
-   ======================================== */
-.scroll-indicator {
-  display: none; /* Oculto permanentemente */
-}
-
-/* ========================================
-   MODALES MEJORADOS
-   Ventanas emergentes para mensajes
-   ======================================== */
-.custom-modal,
-.image-modal {
-  display: none; /* Oculto por defecto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
-  backdrop-filter: blur(5px); /* Desenfoque del fondo */
-  z-index: 1000; /* Encima del contenido */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-md);
-  opacity: 0;
-  transition: opacity var(--transition-slow);
-}
-
-/* Clase para mostrar el modal */
-.custom-modal.show,
-.image-modal.show {
-  opacity: 1;
-}
-
-/* Contenido del modal */
-.modal-content {
-  max-width: 400px;
-  width: 100%;
-  padding: var(--spacing-lg);
+  padding: 16px var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-400);
   text-align: center;
-  animation: slideUp 0.3s ease-out; /* Animación de entrada */
 }
 
-/* Animación de entrada del modal */
-@keyframes slideUp {
-  from {
-    transform: translateY(20px); /* Empieza 20px abajo */
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Título del modal */
-.modal-title {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-2xl);
-  font-weight: 600;
-  color: var(--color-white);
-  margin-bottom: var(--spacing-md);
-}
-
-/* Mensaje del modal */
-.modal-message {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-relaxed);
-}
-
-/* Icono del modal */
-.modal-icon {
-  font-size: 3rem;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-md);
-  display: block;
-  animation: pulse 2s infinite; /* Animación de pulso */
-}
-
-/* Animación de pulso para el icono */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Botón del modal */
-.modal-button {
-  margin-top: var(--spacing-lg);
-  padding: var(--spacing-md) var(--spacing-xl);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 100%
-  );
-  color: var(--color-white);
-  border: none;
-  border-radius: var(--border-radius-lg);
-  font-size: var(--font-size-base);
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform var(--transition-base),
-    box-shadow var(--transition-base);
-  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3), var(--shadow-md);
-}
-
-/* Hover del botón del modal */
-.modal-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(108, 99, 255, 0.4), var(--shadow-lg);
-}
-
-/* ========================================
-   ANIMACIONES DE ENTRADA AOS
-   Para elementos animados al cargar
-   ======================================== */
-[data-aos] {
-  opacity: 0;
-  transition-property: transform, opacity;
-}
-
-[data-aos].aos-animate {
-  opacity: 1;
+.copyright-text {
+  margin: 0;
+  line-height: 1.4;
 }
 
 /* ========================================
    UTILIDADES
-   Clases auxiliares
    ======================================== */
 .mobile-device .profile-card {
-  touch-action: pan-y; /* Solo permite scroll vertical en móvil */
-}
-
-/* ========================================
-   MEDIA QUERIES - DISEÑO RESPONSIVO
-   Ajustes para diferentes tamaños de pantalla
-   ======================================== */
-
-/* Para pantallas pequeñas (móviles) */
-@media (max-width: 640px) {
-  :root {
-    font-size: 14px; /* Reduce tamaño base de fuente */
-  }
-
-  body {
-    padding: 0;
-  }
-
-  .profile-card {
-    margin: 0 auto;
-  }
-
-  .content {
-    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
-    gap: var(--spacing-sm);
-  }
-
-  /* Imagen de perfil más pequeña */
-  .profile-image {
-    width: 140px;
-    height: 140px;
-  }
-
-  /* Textos más pequeños */
-  .artist-name {
-    font-size: var(--font-size-3xl);
-  }
-
-  .artist-title {
-    font-size: var(--font-size-lg);
-  }
-
-  .artist-description {
-    font-size: var(--font-size-sm);
-  }
-
-  /* Botones más compactos */
-  .nav-button {
-    padding: var(--spacing-md) var(--spacing-md);
-    font-size: var(--font-size-sm);
-  }
-
-  .nav-buttons {
-    gap: var(--spacing-sm);
-  }
-
-  /* Oculta la firma en móvil */
-  .brand-signature {
-    display: none;
-  }
-
-  /* Modal más pequeño */
-  .modal-content {
-    padding: var(--spacing-md);
-    margin: var(--spacing-md);
-  }
-}
-
-/* Para pantallas grandes (desktop) */
-@media (min-width: 1024px) {
-  .profile-card {
-    max-width: 480px; /* Un poco más ancho */
-  }
-
-  .content {
-    padding: calc(var(--spacing-xl) + var(--spacing-md)) var(--spacing-xl);
-  }
-}
-
-/* ========================================
-   MODO OSCURO (PREFERENCIA DEL SISTEMA)
-   Se activa si el usuario tiene modo oscuro
-   ======================================== */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--color-gray-900);
-  }
-}
-
-/* ========================================
-   ACCESIBILIDAD - ANIMACIONES REDUCIDAS
-   Para usuarios que prefieren menos movimiento
-   ======================================== */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  touch-action: pan-y;
 }
 
 /* ========================================
    SCROLLBAR PERSONALIZADA
-   Estiliza la barra de desplazamiento
    ======================================== */
-
-/* Para navegadores Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -871,42 +669,28 @@ body {
   background-color: var(--color-primary-dark);
 }
 
-/* Para Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1);
 }
 
-.profile-card {
-  max-width: 440px; /* restaurado, sin max-height ni overflow */
-  margin: 0 auto;
-  position: relative;
+/* ========================================
+   EFECTOS HOVER PARA LÍNEAS DIVISORIAS
+   ======================================== */
+.profile-card:hover .divider-top {
+  filter: brightness(1.3);
+  transition: filter 0.3s ease;
 }
 
-/* Fondo principal */
-body {
-  background-color: #1a1f36;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+.profile-card:hover .divider {
+  filter: brightness(1.3);
+  transition: filter 0.3s ease;
 }
 
-/* Contenedor principal */
-.container {
-  margin: 0 auto;
-  padding: 1.5rem;
-  max-width: 80%;
-  width: 400px;
-  background-color: #1f2937;
-  border-radius: 20px;
-  box-shadow: var(--shadow-xl);
-  height: auto;
-  min-height: 0;
+.profile-card:hover .divider-top::after {
+  animation-duration: 1s;
 }
 
-/* Eliminar efectos de fondo que puedan interferir */
-.background-wrapper {
-  position: relative;
-  width: 100%;
-  background: none;
+.profile-card:hover .divider::after {
+  animation-duration: 2s;
 }
